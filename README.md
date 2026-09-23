@@ -1,35 +1,77 @@
-Sensor Data Analysis & Human Activity Recognition
+Human Activity Recognition Using Smartphone Sensor Data
 
-A machine learning project for analyzing sensor data and recognizing human activities using Python and scikit-learn.
+This project uses the UCI Human Activity Recognition Using Smartphones Dataset, which contains sensor measurements collected from smartphones while participants performed different daily activities.
 
-Project Overview
-This project uses sensor data to explore how machine learning can be used for Human Activity Recognition (HAR).
+Dataset
+The dataset contains six different activities:
 
-The project includes:
-* Data exploration
-* Data visualization
-* Data preprocessing
-* Feature and label selection
-* Train/test splitting
-* Feature scaling
-* Classification models
-* Model evaluation
+* Walking
+* Walking Upstairs
+* Walking Downstairs
+* Sitting
+* Standing
+* Laying
 
-Machine Learning Models
+The training dataset contains 7,352 observations and 561 features from smartphone accelerometer and gyroscope signals in both time and frequency domains.
+
+The dataset was first examined using Pandas and basic exploratory data analysis techniques:
+
+* Dataset shape and feature inspection
+* Missing value analysis
+* Duplicate row analysis
+* Activity distribution
+* Feature histograms
+* Box plots
+* Scatter plots
+* Feature importance analysis
+
+No missing values or duplicate observations were found in the training data. Since the provided features were already processed and scaled, additional normalization was not applied.
+
+The exploratory analysis also showed that some features can help distinguish different activities. For example, the combination of acceleration-related features showed a visible difference between activities such as Walking and Sitting.
+
+Three classification algorithms were tested:
+
 * K-Nearest Neighbors (KNN)
 * Decision Tree
 * Random Forest
 
-Technologies
+The models were trained using the training dataset and evaluated on the test dataset.
+
+Model	Test Accuracy
+KNN	97%
+Decision Tree	94%
+Random Forest	98%
+
+Random Forest has the highest test accuracy among the three models.
+
+The classification results also showed that Sitting and Standing were more difficult to distinguish than some of the other activities. Random Forest reduced the confusion between these two activities compared with KNN.
+
+
+Feature importance was examined using the Random Forest model.
+
+Some of the most important features included:
+* tGravityAcc-min()-X
+* angle(Y,gravityMean)
+* tGravityAcc-max()-Y
+* tGravityAcc-max()-X
+* tGravityAcc-energy()-X
+
+This analysis helped identify which sensor-derived features contributed more to the model’s classification decisions.
+
+Limitations
+
+The dataset has several limitations. It was collected from only 30 participants, so the results may not generalize to all users. It also contains only six predefined activities and was collected using a specific smartphone and sensor configuration.
+
+Tools & Libraries
 * Python
-* NumPy
 * Pandas
+* NumPy
 * Matplotlib
 * Scikit-learn
-* Jupyter Notebook /Google Colab
+* Google Colab
+* GitHub
 
-Dataset
-The dataset is not included in this repository because of its file size.
+Project Goal
 
-Goal
-The goal of this project is to understand how sensor data can be processed and used for machine learning-based human activity recognition.
+The main goal of this project was to understand the complete machine learning workflow, from dataset exploration and preprocessing to model training, evaluation, and feature importance analysis.
+The project also provided practical experience with sensor data, classification algorithms, exploratory data analysis, and machine learning evaluation.
